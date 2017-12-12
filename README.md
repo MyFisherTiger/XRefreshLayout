@@ -57,11 +57,11 @@ allprojects {
 
 **Step 2.** **Add the dependency**
 
- [![](https://jitpack.io/v/li-xiaojun/XRefreshLayout.svg)](https://jitpack.io/#li-xiaojun/XRefreshLayout)
+ [![](https://jitpack.io/v/MyFisherTiger/XRefreshLayout.svg)](https://jitpack.io/#MyFisherTiger/XRefreshLayout)
 
 ```groovy
 dependencies {
-	compile 'com.github.li-xiaojun:XRefreshLayout:lastest release here'
+	compile 'com.github.MyFisherTiger:XRefreshLayout:lastest release here'
 }
 ```
 
@@ -105,6 +105,13 @@ dependencies {
 
   ​
 
+- you can choose
+
+  ```xml
+  0.不修改，默认最简加载页面
+  1.你可以设置中文加载页面xrefreshLayout.setLoadingLayout(new ChineseLoadingLayout());
+  2.或者自己继承ILoadingLayout接口实现自定义加载页面MLayout,然后xrefreshLayout.setLoadingLayout(new MLayout());即可
+  ```
 - set refresh listener
 
   ```java
