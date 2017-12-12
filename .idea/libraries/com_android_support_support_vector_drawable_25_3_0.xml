@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="com.android.support:support-vector-drawable-25.3.0">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.3.0.aar/f3e13c562736e940b6638787cb668b60/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-25.3.0.aar/f3e13c562736e940b6638787cb668b60/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/d43ab310e4ac7153a282e17f884a642aaa6985a0/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/d43ab310e4ac7153a282e17f884a642aaa6985a0/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
