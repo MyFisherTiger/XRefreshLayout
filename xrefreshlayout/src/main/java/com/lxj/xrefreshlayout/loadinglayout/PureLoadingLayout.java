@@ -1,23 +1,27 @@
 package com.lxj.xrefreshlayout.loadinglayout;
 
+import android.animation.FloatEvaluator;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.ViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lxj.xrefreshlayout.R;
-import com.lxj.xrefreshlayout.util.L;
 
 /**
- * Created by dance on 2017/4/2.
+ * Created by Administrator on 2017/12/12.
+ * 纯净版加载布局
  */
 
-public class DefaultLoadingLayout implements ILoadingLayout {
-
+public class PureLoadingLayout implements ILoadingLayout {
     private View headerView;
     private View footerView;
     private ImageView ivHeaderProgress,ivHeaderArrow;
@@ -47,7 +51,7 @@ public class DefaultLoadingLayout implements ILoadingLayout {
 
     @Override
     public void initAndResetHeader() {
-        tvHeaderState.setText("下拉刷新");
+        tvHeaderState.setVisibility(View.GONE);
         ivHeaderArrow.setVisibility(View.VISIBLE);
         ivHeaderArrow.setRotation(0);
         ivHeaderProgress.setVisibility(View.INVISIBLE);
@@ -61,7 +65,7 @@ public class DefaultLoadingLayout implements ILoadingLayout {
 
     @Override
     public void initAndResetFooter() {
-        tvFooterState.setText("上拉加载");
+        tvFooterState.setVisibility(View.GONE);
         ivFooterArrow.setVisibility(View.VISIBLE);
         ivFooterArrow.setRotation(0);
         ivFooterProgress.setVisibility(View.INVISIBLE);
@@ -73,19 +77,16 @@ public class DefaultLoadingLayout implements ILoadingLayout {
 
     @Override
     public void onPullHeader(float percent) {
-        tvHeaderState.setText(percent==1f?"释放立即刷新":"下拉刷新");
         ivHeaderArrow.setRotation(360*percent);
     }
 
     @Override
     public void onPullFooter(float percent) {
-        tvFooterState.setText(percent==1f?"释放立即加载":"上拉加载");
         ivFooterArrow.setRotation(360*percent);
     }
 
     @Override
     public void onHeaderRefreshing() {
-        tvHeaderState.setText("正在刷新...");
         ivHeaderArrow.setVisibility(View.INVISIBLE);
         ivHeaderProgress.setVisibility(View.VISIBLE);
         headerAnimationDrawable.start();
@@ -93,10 +94,8 @@ public class DefaultLoadingLayout implements ILoadingLayout {
 
     @Override
     public void onFooterRefreshing() {
-        tvFooterState.setText("正在加载...");
         ivFooterArrow.setVisibility(View.INVISIBLE);
         ivFooterProgress.setVisibility(View.VISIBLE);
         footerAnimdrawable.start();
     }
-
 }

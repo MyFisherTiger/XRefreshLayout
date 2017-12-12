@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lxj.xrefreshlayout.XRefreshLayout;
+import com.lxj.xrefreshlayout.loadinglayout.PureLoadingLayout;
 
 import java.util.ArrayList;
 
@@ -61,7 +62,8 @@ public class RecyclerViewActivity extends AppCompatActivity {
         recyclerview.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
         myAdapter = new MyAdapter(list);
         recyclerview.setAdapter(myAdapter);
-
+        //xrefreshLayout.setLoadingLayout(new PureLoadingLayout());
+        xrefreshLayout.setFirstLoading();
     }
 
     private void initView() {

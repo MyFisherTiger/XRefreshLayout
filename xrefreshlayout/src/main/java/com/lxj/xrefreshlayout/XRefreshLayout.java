@@ -10,8 +10,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.OverScroller;
 
-import com.lxj.xrefreshlayout.loadinglayout.DefaultLoadingLayout;
 import com.lxj.xrefreshlayout.loadinglayout.ILoadingLayout;
+import com.lxj.xrefreshlayout.loadinglayout.PureLoadingLayout;
 import com.lxj.xrefreshlayout.util.DensityUtil;
 import com.lxj.xrefreshlayout.util.L;
 
@@ -37,23 +37,28 @@ public class XRefreshLayout extends FrameLayout implements NestedScrollingParent
 
     boolean isRelease = false;
     private boolean isSmoothScrolling = false;
+    private Context mContext;
 
     public XRefreshLayout(Context context) {
         this(context, null);
+        this.mContext=context;
     }
 
     public XRefreshLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
+        this.mContext=context;
     }
 
     public XRefreshLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
+        this.mContext=context;
         MIN_LOADING_LAYOUG_HEIGHT = DensityUtil.dip2px(context, MIN_LOADING_LAYOUG_HEIGHT);
         OVERSCROLL_RANGE = DensityUtil.dip2px(context, OVERSCROLL_RANGE);
 
         scroller = new OverScroller(getContext());
-        loadingLayout = new DefaultLoadingLayout();
+        //loadingLayout = new ChineseLoadingLayout();
+        loadingLayout=new PureLoadingLayout();
     }
 
 
@@ -132,6 +137,15 @@ public class XRefreshLayout extends FrameLayout implements NestedScrollingParent
         isPullHeader = false;
         isPullFooter = false;
         return true;
+    }
+
+    //设置为加载状态
+    public void setFirstLoading(){
+        scroller.startScroll(0, getScrollY(), 0, -DensityUtil.dip2px(mContext,70));
+        loadingLayout.onHeaderRefreshing();
+        if (listener != null) {
+            listener.onRefresh();
+        }
     }
 
     /**

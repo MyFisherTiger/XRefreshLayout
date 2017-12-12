@@ -1,6 +1,5 @@
 package com.xrefreshlayout.sample;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -10,8 +9,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.lxj.xrefreshlayout.XRefreshLayout;
-import com.lxj.xrefreshlayout.loadinglayout.DefaultLoadingLayout;
-import com.lxj.xrefreshlayout.loadinglayout.CircleLoadingLayout;
+import com.lxj.xrefreshlayout.loadinglayout.ChineseLoadingLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,12 +58,12 @@ public class CustomRefreshAnimActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.dafulat:
-                xrefreshLayout.setLoadingLayout(new DefaultLoadingLayout());
+                xrefreshLayout.setLoadingLayout(new ChineseLoadingLayout());
                 break;
             case R.id.circle:
-                CircleLoadingLayout circleLoadingLayout = new CircleLoadingLayout();
+                //CircleLoadingLayout circleLoadingLayout = new CircleLoadingLayout();
 //                circleLoadingLayout.setCircleColor(Color.GREEN);
-                xrefreshLayout.setLoadingLayout(circleLoadingLayout);
+                //xrefreshLayout.setLoadingLayout(circleLoadingLayout);
                 break;
         }
         return super.onOptionsItemSelected(item);
